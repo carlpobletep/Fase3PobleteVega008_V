@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html lang="es"> 
+	  
+	
+	<head>
+	<img src="imagenes/chuñalogo.jpeg" alt="Bungee" width="300" height="187">
+    <meta charset="utf-8">
+		<title>Chuña LTDA</title>
+		<script>
+		
+	function validarFormulario(){
+
+		var txtNombre = document.getElementById('nombre').value;
+		var txtApellido = document.getElementById('apellido').value;
+		var txtCorreo = document.getElementById('correo').value;
+		var cmbSelector = document.getElementById('selector').selectedIndex;
+		var rbtEstado = document.getElementsByName('radioButton');
+
+		var banderaRBTN = false;
+
+		
+		if(txtNombre == null || txtNombre.length == 0 || /^\s+$/.test(txtNombre)){
+			alert('ERROR: El campo nombre no debe ir vacío o lleno de solamente espacios en blanco');
+			document.datos.nombre.focus();
+			return false;
+		}
+		
+		
+		if(txtApellido == null || txtApellido.length == 0 || /^\s+$/.test(txtApellido)){
+			alert('ERROR: El campo apellido no debe ir vacío o lleno de solamente espacios en blanco');
+			document.datos.apellido.focus();
+			return false;
+
+		
+		}
+
+		
+		if(!(/\S+@\S+\.\S+/.test(txtCorreo))){
+			alert('ERROR: Debe escribir un correo válido');
+			document.datos.correo.value="";
+			document.datos.correo.focus();
+			return false;
+		}
+
+		
+		if(cmbSelector == null || cmbSelector == 0){
+			alert('ERROR: Debe seleccionar un metodo de pago disponible');
+			document.datos.selector.focus();
+			return false;
+		}
+
+
+		
+		for(var i = 0; i < rbtEstado.length; i++){
+			if(rbtEstado[i].checked){
+				banderaRBTN = true;
+				break;
+			}
+		}
+		if(!banderaRBTN){
+			alert('ERROR: Debe elegir una opción de radio button');
+			return false;
+		}
+
+		return true;
+	}
+
+	</script>
+</head>
+<body>
+
+	<p1><b>Ingrese sus datos para hacer la compra:<b> </p1><br><br> 
+	
+	<form name="datos" action="" onsubmit="return validarFormulario()">
+		<label for="nombre">
+			<span>Nombre:</span>
+		</label>
+		<input type="text" id="nombre" name="nombre">
+		
+		<br><br>
+		
+		<label for="apellido">
+			<span>Apellido:</span>
+		</label>
+		<input type="text" id="apellido" name="apellido">
+
+		<br><br>
+
+		<label for="correo">
+			<span>Correo electrónico:</span>
+		</label>
+		<input type="text" id="correo" name="correo" >
+
+		<br><br>
+
+		<label for="selector">
+			<span>Seleccione metodo de pago:</span>
+		</label>
+		<select name="selector" id="selector" >
+			<option value=""></option>
+			<option value="1">Debito</option>
+			<option value="2">Credito</option>
+		</select>
+
+		<br><br>
+
+
+		<label for="radioButton">
+			<span>Seleccione una opción:</span>
+		</label><br>
+		<input type="radio" id="radioButton" name="radioButton"> A domicilio<br>
+		<input type="radio" id="radioButton" name="radioButton"> Retiro en local<br>
+		
+		<br><br>
+
+		<input type="submit" value="Comprar">
+		
+		
+	<script>
+function confirmacion() {
+	var pregunta = confirm("¿Deseas visitar la página principal?")
+	if (pregunta){
+		alert("Te envío allí rápidamente")
+		window.location = "file:///C:/Users/cmpp2/OneDrive/Documentos/WEB%20Y%20MOBILE/Proyectoweb/Distribuidora.html";
+	}
+	else{
+		alert("Quizás en otro momento...\n Gracias de todas formas")
+	}
+}
+</script>
+<button type="button" onclick="confirmacion()" >pagina principal</button>
+
+	</form>
+</body>
+	 </html>
